@@ -8,22 +8,15 @@ echo "--- 1. Atualizando o Sistema ---"
 sudo apt update && sudo apt upgrade -y
 
 echo "--- 2. Instalando Pacotes ---"
-sudo apt install -y sway waybar foot wofi thunar gvfs tumbler thunar-archive-plugin thunar-volman swayimg zathura grim slurp wl-clipboard blueman bluez pipewire-pulse wireplumber brightnessctl playerctl fonts-jetbrains-mono policykit-1-gnome network-manager-gnome 
+sudo apt install -y sway waybar foot wofi thunar gvfs tumbler thunar-archive-plugin thunar-volman swayimg zathura grim slurp wl-clipboard blueman bluez pipewire-pulse wireplumber brightnessctl playerctl fonts-jetbrains-mono policykit-1-gnome network-manager-gnome
 
-# Instalação do Greetd e Tuigreet
-echo "Instalando gerenciador de login..."
-sudo apt install -y greetd
-sudo apt install -y tuigreet || echo "Aviso: tuigreet não encontrado nos repositórios. Instale via Cargo ou pacote .deb manualmente."
+# Instalando SDDM
+sudo apt install -y sddm
 
-echo "--- 3. Configurando o Greetd (Login Screen) ---"
-# Criando o arquivo de configuração do greetd via script
-sudo bash -c 'cat <<EOF > /etc/greetd/config.toml
-[terminal]
-vt = 7
-
-[default_session]
-command = "tuigreet --time --remember --sessions sway"
-user = "_greetd"
+sudo mkdir -p /etc/sddm.conf.d
+sudo bash -c 'cat <<EOF > /etc/sddm.conf.d/wayland.conf
+[General]
+DisplayServer=wayland
 EOF'
 
 echo "--- 4. Aplicando Links Simbólicos (Dotfiles) ---"
@@ -60,6 +53,5 @@ sudo systemctl enable greetd
 
 echo "---------------------------------------------------"
 echo "Setup Concluído!"
-echo "O Greetd foi configurado para iniciar o Tuigreet no VT7."
 echo "Reinicie o sistema para testar."
 echo "---------------------------------------------------"
