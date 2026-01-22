@@ -4,7 +4,7 @@
 DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CONFIG_DIR="$HOME/.config"
 
-# --- 1. Definição dos Grupos de Pacotes (Baseado no seu código) ---
+# --- 1. Definição dos Grupos de Pacotes ---
 
 PACKAGES_CORE=(
     sway swayidle gtklock swaybg waybar
@@ -55,24 +55,34 @@ sudo apt update && sudo apt upgrade -y
 echo "--- Instalando Pacotes Selecionados ---"
 sudo apt install -y ${all_packages[*]}
 
-# --- 3. Configuração de Teclado e Localização ---
+# --- 3. Configuração de Teclado Global ---
 
 echo "--- Configurando Teclado Global (US-Intl) ---"
-# Isso garante que o teclado funcione corretamente no terminal e no Sway
 sudo localectl set-x11-keymap us pc105 intl
 
 # --- 4. Automação do Login (Início Automático do Sway) ---
 
-echo "--- Configurando Auto-start do Sway no .bashrc ---"
-if ! grep -q "exec sway" ~/.bashrc; then
-    cat <<EOF >> ~/.bashrc
+echo "--- Configurando Auto-start no .profile ---"
 
-# Iniciar o Sway automaticamente no TTY1 (Login via terminal)
+# Criamos um backup do .profile por segurança
+[ -f ~/.profile ] && cp ~/.profile ~/.profile.bak
+
+# Adicionando as instruções ao final do .profile
+# Note que $DOTFILES_DIR será substituído pelo caminho real durante a execução
+cat <<EOF >> ~/.profile
+
+# --- Início das configurações do script de dotfiles ---
+if [ -n "\$BASH_VERSION" ]; then
+    if [ -f "$DOTFILES_DIR/.bashrc" ]; then
+        . "$DOTFILES_DIR/.bashrc"
+    fi
+fi
+
 if [ -z "\${DISPLAY}" ] && [ "\${XDG_VTNR}" -eq 1 ]; then
-  exec sway
+    exec sway
 fi
+# --- Fim das configurações do script de dotfiles ---
 EOF
-fi
 
 # --- 5. Criação de Links Simbólicos ---
 
