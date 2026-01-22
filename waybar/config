@@ -1,0 +1,85 @@
+[
+  {
+    "output": ["HDMI-A-1", "eDP-1"],
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "modules-left": ["sway/workspaces", "tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "disk", "pulseaudio", "network", "battery", "sway/language", "bluetooth", "custom/power"],
+    
+    "sway/language": {
+      "format": "  {}",
+      "min-length": 5,
+      "on-click": "sway msg input type:keyboard xkb_switch_layout next"
+    },
+
+    "bluetooth": {
+      "format": "  {status}",
+      "format-connected": "  {device_alias}",
+      "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "on-click": "blueman-manager"
+  },
+
+    "sway/workspaces": {
+      "disable-scroll": true,
+      "all-outputs": true,
+      "format": "{icon}",
+      "format-icons": {
+        "focused": "",
+        "default": ""
+      }
+    },
+
+    "clock": {
+      "format": "  {:%H:%M} ",
+      "tooltip-format": " {:%A, %d %B %Y}"
+    },
+
+    "cpu": {
+      "format": " {usage}% ",
+      "interval": 5
+    },
+
+    "memory": {
+      "format": "󰍛 {used:0.1f}G ",
+      "interval": 5
+    },
+
+    "disk": {
+      "interval": 30,
+      "format": "󰋊 {percentage_used}% ",
+      "path": "/"
+    },
+
+    "pulseaudio": {
+      "format": "  {volume}% ",
+      "format-muted": " 󰝟 ",
+      "scroll-step": 5
+    },
+
+    "network": {
+      "format-wifi": "  {signalStrength}% ",
+      "format-ethernet": " 󰈀 ",
+      "format-disconnected": " 󰖪 "
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity}% ",
+      "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "custom/power": {
+      "format": " ⏻ ",
+      "tooltip": false,
+      "on-click": "~/.config/wofi/wofi-menu.sh"
+    }
+  }
+]

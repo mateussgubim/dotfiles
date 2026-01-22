@@ -1,0 +1,37 @@
+* {
+  /* Nomes exatos extraídos do seu fc-list */
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "JetBrainsMono Nerd Font Mono", monospace;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+}
+
+#waybar {
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+}
+
+/* Tamanho da fonte por monitor */
+#waybar.HDMI-A-1 { font-size: 14px; }
+#waybar.eDP-1 { font-size: 16px; }
+
+/* Margens entre os módulos para não ficarem grudados */
+#cpu, #memory, #disk, #pulseaudio, #network, #battery, #clock, #custom-power {
+  margin: 0 1px;
+  padding: 0 3px;
+}
+
+#workspaces button {
+  padding: 0 2px;
+ /* color: #585b70; */
+  color: #f5c2e7;
+}
+
+#workspaces button.focused {
+ /* color: #fab387;*/
+  border-bottom: 2px solid #f5c2e7;
+}
+
+#battery.warning { color: #f9e2af; }
+#battery.critical { color: #f38ba8; }
+#custom-power { color: #f38ba8; }

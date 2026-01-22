@@ -1,0 +1,5 @@
+set default-bg "#1e1e2e"
+set default-fg "#cdd6f4"
+set statusbar-bg "#313244"
+set statusbar-fg "#cdd6f4"
+set highlight-color "#f5c2e7"
