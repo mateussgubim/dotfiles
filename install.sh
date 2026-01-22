@@ -103,6 +103,16 @@ done
 # Permissão para o menu do Wofi
 [ -f "$CONFIG_DIR/wofi/wofi-menu.sh" ] && chmod +x "$CONFIG_DIR/wofi/wofi-menu.sh"
 
+# Instalando JetBrainsMono
+mkdir -p $HOME/.local/share/fonts
+cd $HOME/.local/share/fonts
+
+curl -fLo JetBrainsMono.zip \
+  https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+
+unzip JetBrainsMono.zip
+fc-cache -fv
+
 echo "---------------------------------------------------"
 echo "Setup Concluído!"
 echo "---------------------------------------------------"
