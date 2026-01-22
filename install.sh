@@ -4,53 +4,95 @@
 DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CONFIG_DIR="$HOME/.config"
 
-echo "--- 1. Atualizando o Sistema ---"
-sudo apt update && sudo apt upgrade -y
+# --- 1. Definição dos Grupos de Pacotes (Baseado no seu código) ---
 
-echo "--- 2. Instalando Pacotes ---"
-sudo apt install -y sway waybar foot wofi thunar gvfs tumbler thunar-archive-plugin thunar-volman swayimg zathura grim slurp wl-clipboard blueman bluez pipewire-pulse wireplumber brightnessctl playerctl fonts-jetbrains-mono policykit-1-gnome network-manager-gnome
-
-# Instalando SDDM
-sudo apt install -y sddm
-
-sudo mkdir -p /etc/sddm.conf.d
-sudo bash -c 'cat <<EOF > /etc/sddm.conf.d/wayland.conf
-[General]
-DisplayServer=wayland
-EOF'
-
-echo "--- 4. Aplicando Links Simbólicos (Dotfiles) ---"
-mkdir -p "$CONFIG_DIR"
-
-declare -A DOTFILES=(
-    ["sway"]="$CONFIG_DIR/sway"
-    ["waybar"]="$CONFIG_DIR/waybar"
-    ["wofi"]="$CONFIG_DIR/wofi"
-    ["zathura"]="$CONFIG_DIR/zathura"
-    ["foot"]="$CONFIG_DIR/foot"
+PACKAGES_CORE=(
+    sway swayidle gtklock swaybg waybar
+    xwayland build-essential
 )
 
-for folder in "${!DOTFILES[@]}"; do
-    TARGET="${DOTFILES[$folder]}"
-    SOURCE="$DOTFILES_DIR/$folder"
-    rm -rf "$TARGET"
-    ln -sfn "$SOURCE" "$TARGET"
-    echo "✔ Linkado: $SOURCE -> $TARGET"
-done
+PACKAGES_SWAY=(
+    wofi foot sway-notification-center autotiling
+    grim slurp wl-clipboard cliphist
+    brightnessctl playerctl
+    wlr-randr xdg-desktop-portal-wlr swappy
+)
 
-# Link para o .bashrc
-ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+PACKAGES_UI=(
+    nwg-look network-manager-gnome lxpolkit
+)
 
-echo "--- 5. Ajustando Permissões de Scripts ---"
-if [ -f "$DOTFILES_DIR/wofi/wofi-menu.sh" ]; then
-    chmod +x "$DOTFILES_DIR/wofi/wofi-menu.sh"
-    echo "✔ Permissão concedida ao wofi-menu.sh"
+PACKAGES_FILE_MANAGER=(
+    thunar thunar-archive-plugin thunar-volman
+    gvfs gvfs-backends mtools unzip
+)
+
+PACKAGES_AUDIO=(
+    pavucontrol pulsemixer pipewire-pulse wireplumber
+)
+
+PACKAGES_UTILITIES=(
+    xdg-user-dirs swayimg zathura
+    libnotify-bin curl wget git
+)
+
+PACKAGES_FONTS=(
+    fonts-font-awesome fonts-jetbrains-mono fonts-noto-color-emoji
+)
+
+# Junção de todos os pacotes
+all_packages=(
+    "${PACKAGES_CORE[@]}" "${PACKAGES_SWAY[@]}" "${PACKAGES_UI[@]}"
+    "${PACKAGES_FILE_MANAGER[@]}" "${PACKAGES_AUDIO[@]}" 
+    "${PACKAGES_UTILITIES[@]}" "${PACKAGES_FONTS[@]}"
+)
+
+# --- 2. Execução da Instalação ---
+
+echo "--- Atualizando Sistema ---"
+sudo apt update && sudo apt upgrade -y
+
+echo "--- Instalando Pacotes Selecionados ---"
+sudo apt install -y ${all_packages[*]}
+
+# --- 3. Configuração de Teclado e Localização ---
+
+echo "--- Configurando Teclado Global (US-Intl) ---"
+# Isso garante que o teclado funcione corretamente no terminal e no Sway
+sudo localectl set-x11-keymap us pc105 intl
+
+# --- 4. Automação do Login (Início Automático do Sway) ---
+
+echo "--- Configurando Auto-start do Sway no .bashrc ---"
+if ! grep -q "exec sway" ~/.bashrc; then
+    cat <<EOF >> ~/.bashrc
+
+# Iniciar o Sway automaticamente no TTY1 (Login via terminal)
+if [ -z "\${DISPLAY}" ] && [ "\${XDG_VTNR}" -eq 1 ]; then
+  exec sway
+fi
+EOF
 fi
 
-echo "--- 6. Ativando Serviços ---"
-sudo systemctl enable bluetooth
+# --- 5. Criação de Links Simbólicos ---
+
+echo "--- Aplicando Links Simbólicos ---"
+mkdir -p "$CONFIG_DIR"
+
+# Lista de pastas para linkar
+folders=("sway" "waybar" "wofi" "foot" "zathura")
+
+for folder in "${folders[@]}"; do
+    if [ -d "$DOTFILES_DIR/$folder" ]; then
+        rm -rf "$CONFIG_DIR/$folder"
+        ln -sfn "$DOTFILES_DIR/$folder" "$CONFIG_DIR/$folder"
+        echo "✔ $folder linkado."
+    fi
+done
+
+# Permissão para o menu do Wofi
+[ -f "$CONFIG_DIR/wofi/wofi-menu.sh" ] && chmod +x "$CONFIG_DIR/wofi/wofi-menu.sh"
 
 echo "---------------------------------------------------"
 echo "Setup Concluído!"
-echo "Reinicie o sistema para testar."
 echo "---------------------------------------------------"
