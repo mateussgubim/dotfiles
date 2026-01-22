@@ -15,7 +15,7 @@ PACKAGES_SWAY=(
     wofi foot sway-notification-center autotiling
     grim slurp wl-clipboard cliphist
     brightnessctl playerctl
-    wlr-randr xdg-desktop-portal-wlr swappy
+    wlr-randr xdg-desktop-portal-gtk xdg-desktop-portal-wlr swappy
 )
 
 PACKAGES_UI=(
