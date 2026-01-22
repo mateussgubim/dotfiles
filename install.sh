@@ -49,7 +49,6 @@ fi
 
 echo "--- 6. Ativando Serviços ---"
 sudo systemctl enable bluetooth
-sudo systemctl enable greetd
 
 echo "---------------------------------------------------"
 echo "Setup Concluído!"
