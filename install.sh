@@ -69,7 +69,7 @@ echo "--- Configurando Auto-start no .profile ---"
 
 # Adicionando as instruções ao final do .profile
 # Note que $DOTFILES_DIR será substituído pelo caminho real durante a execução
-cat <<EOF >> ~/.profile
+cat <<EOF >> $HOME/.profile
 
 # --- Início das configurações do script de dotfiles ---
 if [ -n "\$BASH_VERSION" ]; then
