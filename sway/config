@@ -24,17 +24,17 @@ gaps inner 5
 gaps outer 2
 
 # Opcional: Remove os gaps se houver apenas uma janela aberta (visual limpo)
-smart_gaps off
+smart_gaps on
 
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 2
+default_floating_border pixel 2
 
-# Cores das janelas (Estilo Catppuccin Mocha)
-# class                 border  backgr. text    indicator child_border
-client.focused          #f5c2e7 #f5c2e7 #11111b #f5c2e7   #f5c2e7
-client.focused_inactive #313244 #313244 #cdd6f4 #313244   #313244
-client.unfocused        #1e1e2e #1e1e2e #cdd6f4 #1e1e2e   #1e1e2e
-client.urgent           #f38ba8 #f38ba8 #11111b #f38ba8   #f38ba8
+# Cores das janelas
+# class                 border  backgr. text      indicator      child_border
+client.focused          $blue   $blue   $theme_bg $theme_accent  $blue
+client.focused_inactive $theme_inactive $theme_inactive $theme_fg $theme_inactive $theme_inactive 
+client.unfocused        $theme_bg $theme_bg $theme_fg $theme_bg  $theme_bg 
+client.urgent           $theme_urgent $theme_urgent $theme_bg $theme_urgent $theme_urgent
 
 include /etc/sway/config-vars.d/*
 
