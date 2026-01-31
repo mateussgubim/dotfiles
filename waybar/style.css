@@ -4,7 +4,7 @@
 @define-color theme_urgent #f38ba8;
 @define-color theme_inactive #313244;
 @define-color light-blue #b3befe;
-@define-bolor blue #89b4fa;
+@define-color blue #89b4fa;
 
 * {
   /* Nomes exatos extraídos do seu fc-list */
