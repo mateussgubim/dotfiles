@@ -4,20 +4,7 @@ include ~/.config/sway/variables.conf
 include ~/.config/sway/inputs.conf
 include ~/.config/sway/keybinds.conf
 include ~/.config/sway/autostart.conf
-
-# default_border pixel 2
-# default_floating_border pixel 2
-#
-# for_window [class=".*"] border pixel 2
-# for_window [app_id=".*"] border pixel 2 
-#
-#
-# # Formato: client.<classe> <borda> <fundo> <texto> <indicador> <borda_filha>
-# client.focused          #89b4fa #89b4fa #1e1e2e #89b4fa #89b4fa
-# client.focused_inactive #585b70 #585b70 #cdd6f4 #585b70 #585b70
-# client.unfocused        #313244 #313244 #cdd6f4 #313244 #313244
-# client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8 #f38ba8 
-#
+include ~/.config/sway/themes/catppuccin-mocha.conf
 
 # Espaçamento entre janelas (Gaps)
 gaps inner 5
@@ -30,11 +17,11 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Cores das janelas
-# class                 border  backgr. text      indicator      child_border
-client.focused          $blue   $blue   $theme_bg $theme_accent  $blue
-client.focused_inactive $theme_inactive $theme_inactive $theme_fg $theme_inactive $theme_inactive 
-client.unfocused        $theme_bg $theme_bg $theme_fg $theme_bg  $theme_bg 
-client.urgent           $theme_urgent $theme_urgent $theme_bg $theme_urgent $theme_urgent
+# class                 border         backgr.        text          indicator      child_border
+client.focused          $blue          $blue          $theme_bg     $blue          $blue 
+client.focused_inactive $theme_inactive $theme_inactive $theme_fg   $theme_inactive $theme_inactive 
+client.unfocused        $theme_bg      $theme_bg      $theme_fg     $theme_bg      $theme_bg 
+client.urgent           $theme_urgent  $theme_urgent  $theme_bg     $theme_urgent  $theme_urgent
 
 include /etc/sway/config-vars.d/*
 
