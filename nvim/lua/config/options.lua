@@ -1,6 +1,6 @@
 -- Números de linha
 vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Linha do cursor destacada
 vim.opt.cursorline = true
