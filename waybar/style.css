@@ -70,6 +70,11 @@
   color: #fabd2f;
 }
 
+#workspaces button:hover {
+    background: none;
+    box-shadow: none;
+}
+
 #battery.warning { color: #fabd2f; }  /* Yellow */
 #battery.critical { color: #fb4934; } /* Red */
 #custom-power { color: #fb4934; }     /* Red */
