@@ -1,13 +1,12 @@
-@define-color theme_bg #1e1e2e;
-@define-color theme_fg #cdd6f4;
-@define-color theme_accent #f5c2e7;
-@define-color theme_urgent #f38ba8;
-@define-color theme_inactive #313244;
-@define-color light-blue #b3befe;
-@define-color blue #89b4fa;
+@define-color theme_bg #282828;
+@define-color theme_fg #ebdbb2;
+@define-color theme_accent #d3869b;  /* Purple */
+@define-color theme_urgent #fb4934;  /* Bright Red */
+@define-color theme_inactive #504945; /* Dark2 / Gray */
+@define-color light-blue #83a598;    /* Bright Blue */
+@define-color blue #458588;          /* Neutral Blue */
 
 * {
-  /* Nomes exatos extraídos do seu fc-list */
   font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "JetBrainsMono Nerd Font Mono", monospace;
   font-weight: 600;
   border: none;
@@ -15,20 +14,20 @@
 }
 
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+    background-color: #b8bb26; /* Green */
+    color: #282828;
 }
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+    background-color: #fb4934; /* Bright Red */
 }
 
 #mpd.stopped {
-    background-color: #90b1b1;
+    background-color: #7c6f64; /* Dark4 */
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+    background-color: #98971a; /* Neutral Green */
 }
 
 #tray {
@@ -55,7 +54,7 @@
 #waybar.HDMI-A-1 { font-size: 14px; }
 #waybar.eDP-1 { font-size: 16px; }
 
-/* Margens entre os módulos para não ficarem grudados */
+/* Margens entre os módulos */
 #cpu, #memory, #disk, #pulseaudio, #network, #battery, #custom-power {
   margin: 0 1px;
   padding: 0 3px;
@@ -63,13 +62,14 @@
 
 #workspaces button {
   padding: 0 2px;
-  color: @light-blue;
+  /* color: @light-blue; */
+  color: @theme_fg;
 }
 
 #workspaces button.focused {
-  color: @blue;
+  color: #fabd2f;
 }
 
-#battery.warning { color: #f9e2af; }
-#battery.critical { color: #f38ba8; }
-#custom-power { color: #f38ba8; }
+#battery.warning { color: #fabd2f; }  /* Yellow */
+#battery.critical { color: #fb4934; } /* Red */
+#custom-power { color: #fb4934; }     /* Red */

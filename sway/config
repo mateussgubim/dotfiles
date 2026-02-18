@@ -7,7 +7,9 @@ include ~/.config/sway/variables.conf
 include ~/.config/sway/inputs.conf
 include ~/.config/sway/keybinds.conf
 include ~/.config/sway/autostart.conf
-include ~/.config/sway/themes/catppuccin-mocha.conf
+# include ~/.config/sway/themes/catppuccin-mocha.conf
+include ~/.config/sway/themes/gruvbox-dark.conf
+# include ~/.config/sway/themes/gruvbox-light.conf
 
 include /usr/share/sway/config.d/*.conf
 include /etc/sway/config.d/*.conf
@@ -22,17 +24,16 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # Cores das janelas
-# class                 border         backgr.        text          indicator      child_border
-client.focused          $blue          $blue          $theme_bg     $blue          $blue 
-client.focused_inactive $theme_inactive $theme_inactive $theme_fg   $theme_inactive $theme_inactive 
-client.unfocused        $theme_bg      $theme_bg      $theme_fg     $theme_bg      $theme_bg 
-client.urgent           $theme_urgent  $theme_urgent  $theme_bg     $theme_urgent  $theme_urgent
+# class                 border           backgr.          text           indicator       child_border
+client.focused          $theme_accent    $theme_accent    $theme_bg      $theme_indicator $theme_accent
+client.focused_inactive $theme_inactive  $theme_inactive  $theme_fg      $theme_inactive  $theme_inactive
+client.unfocused        $theme_bg        $theme_bg        $theme_fg      $theme_bg        $theme_bg
+client.urgent           $theme_urgent    $theme_urgent    $theme_bg      $theme_urgent    $theme_urgent
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-output * bg /usr/share/backgrounds/default.jxl fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Monitor Externo (HDMI) à esquerda
