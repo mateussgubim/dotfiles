@@ -7,8 +7,8 @@ include ~/.config/sway/variables.conf
 include ~/.config/sway/inputs.conf
 include ~/.config/sway/keybinds.conf
 include ~/.config/sway/autostart.conf
-# include ~/.config/sway/themes/catppuccin-mocha.conf
-include ~/.config/sway/themes/gruvbox-dark.conf
+include ~/.config/sway/themes/catppuccin-mocha.conf
+# include ~/.config/sway/themes/gruvbox-dark.conf
 # include ~/.config/sway/themes/gruvbox-light.conf
 
 include /usr/share/sway/config.d/*.conf

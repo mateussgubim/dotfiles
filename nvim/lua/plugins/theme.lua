@@ -73,7 +73,7 @@ return {
           },
         },
       })
-      -- vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -106,12 +106,19 @@ return {
           SignColumn = { bg = "#ff9900" },
           ["@lsp.type.method"] = { bg = "#ff9900" },
           ["@comment.lua"] = { bg = "#000000" },
+
+          String = { fg = "#ebdbb2", italic = true },
+          SignColumn = { bg = "none" },
+
+          GitSignsAdd = { fg = "#b8bb26", bg = "none" },
+          GitSignsChange = { fg = "#8ec07c", bg = "none" },
+          GitSignsDelete = { fg = "#fb4934", bg = "none" },
         },
         dim_inactive = false,
         transparent_mode = false,
       })
 
-      vim.cmd("colorscheme gruvbox")
+      -- vim.cmd("colorscheme gruvbox")
     end,
   },
 }
