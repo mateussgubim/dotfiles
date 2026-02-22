@@ -3,7 +3,7 @@ include ~/.config/sway/variables.conf
 include ~/.config/sway/inputs.conf
 include ~/.config/sway/keybinds.conf
 include ~/.config/sway/autostart.conf
-include ~/.config/sway/themes/catppuccin-mocha.conf
+include ~/.config/sway/themes/monastic-noir.conf
 
 include /usr/share/sway/config.d/*.conf
 include /etc/sway/config.d/*.conf
@@ -37,6 +37,6 @@ output HDMI-A-1 resolution 1920x1080 position 0,0
 output eDP-1 resolution 1920x1200 position 1920,0
 output eDP-1 scale 1.25
 
-output * bg ~/Downloads/Lofi-Urban-Nightscape.png stretch
+output * bg ./wallpapers/bwi.jpg fit
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

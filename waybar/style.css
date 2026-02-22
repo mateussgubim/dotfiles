@@ -11,10 +11,12 @@
   font-weight: 600;
   border: none;
   border-radius: 0;
+  color: #DED9D1;
 }
 
 #waybar {
-  background-color: @theme_bg;
+  /* background-color: @theme_bg; */
+  background-color: #000;
   color: @theme_fg;
 }
 
@@ -51,4 +53,4 @@
 
 #battery.warning { color: #f9e2af; }
 #battery.critical { color: #f38ba8; }
-#custom-power { color: #f38ba8; }
+#custom-power { color: #DED9D1; }
