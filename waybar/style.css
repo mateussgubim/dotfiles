@@ -7,59 +7,19 @@
 @define-color blue #89b4fa;
 
 * {
-  /* Nomes exatos extraídos do seu fc-list */
   font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", "JetBrainsMono Nerd Font Mono", monospace;
   font-weight: 600;
   border: none;
   border-radius: 0;
 }
 
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#tray {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @theme_urgent;
-}
-
 #waybar {
   background-color: @theme_bg;
   color: @theme_fg;
-  /* border-bottom: 2px solid @theme_accent; */
 }
 
-/* Tamanho da fonte por monitor */
 #waybar.HDMI-A-1 { font-size: 14px; }
 #waybar.eDP-1 { font-size: 16px; }
-
-/* Margens entre os módulos para não ficarem grudados */
-#cpu, #memory, #disk, #pulseaudio, #network, #battery, #custom-power {
-  margin: 0 1px;
-  padding: 0 3px;
-}
 
 #workspaces button {
   padding: 0 2px;
@@ -75,16 +35,18 @@
   box-shadow: none;
 }
 
-#tooltip {
-    background: rgba(43, 48, 59, 0.9);
-    border: 1px solid rgba(100, 114, 125, 0.5);
-    border-radius: 8px;
+#cpu, #memory, #disk, #pulseaudio, #network, #battery, #custom-power {
+  padding: 0 10px;
+  margin: 4px 2px;
 }
 
-/* This is the critical part for the calendar grid */
-#tooltip label {
-    font-family: "JetBrains Mono", "monospace";
-    font-size: 14px;
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @theme_urgent;
 }
 
 #battery.warning { color: #f9e2af; }

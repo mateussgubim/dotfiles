@@ -6,23 +6,13 @@
     "height": 34,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["custom/notification", "clock", "sway/language"],
-    "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "bluetooth", "tray", "custom/power"],
+    "modules-right": ["group/hardware", "wireplumber", "network", "tray", "custom/power"],
     
     "sway/language": {
       "format": "{}",
       "min-length": 5,
       "on-click": "sway msg input type:keyboard xkb_switch_layout next"
     },
-
-    "bluetooth": {
-      "format": " {status}",
-      "format-connected": "  {device_alias}",
-      "format-connected-battery": "  {device_alias} {device_battery_percentage}%",
-      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)",
-      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)\n\n{device_enumerate}",
-      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-      "on-click": "blueman-manager"
-  },
 
     "sway/workspaces": {
       "disable-scroll": true,
@@ -60,8 +50,18 @@
     "escape": true
     },
 
+    "group/hardware": {
+      "orientation": "horizontal",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "hidden",
+        "transition-left-to-right": false
+      },
+      "modules": ["cpu", "memory", "battery"]
+    },
+
     "cpu": {
-      "format": " {usage}% ",
+      "format": " {usage}%",
       "interval": 5
     },
 
@@ -70,15 +70,11 @@
       "interval": 5
     },
 
-    "pulseaudio": {
-     // "format": "  {volume}% ",
+    "wireplumber": {
       "format": "{icon} {volume}%",
       "format-muted": " 󰝟 ",
       "scroll-step": 5,
-      "format-icons": {
-          "headphone": "",
-          "default": ["", "", ""]
-      },
+      "format-icons": ["", "", ""],
       "on-click": "pavucontrol"
     },
 
@@ -97,6 +93,12 @@
       },
       "format": "{icon} {capacity}%",
       "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "spacing": 2,
+    "tray": {
+      "icon-size": 18,
+      "spacing": 5
     },
 
     "custom/power": {
