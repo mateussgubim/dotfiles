@@ -32,7 +32,6 @@ return {
         position = "left",
         width = 32,
         mappings = {
-          ["<space>"] = "toggle_node",
           ["<cr>"] = "open",
           ["o"] = "open",
           ["S"] = "open_split",
