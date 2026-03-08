@@ -49,4 +49,6 @@ else
     echo -e "\033[1;31mWarning: $PACKAGE_LIST not found. Skipping installation.\033[0m"
 fi
 
+xdg-user-dirs-update
+
 echo -e "\033[1;32mSetup complete! Log out and back in to see changes.\033[0m"
