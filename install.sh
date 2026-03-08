@@ -3,7 +3,7 @@
 DOTFILES_REPO="https://github.com/mateussgubim/dotfiles"
 DOTFILES_DIR="$HOME/.dotfiles"
 CONFIG_DIR="$HOME/.config"
-PACKAGE_LIST="$CONFIG_DIR/packages" 
+PACKAGE_LIST="$DOTFILES_DIR/packages" 
 
 echo -e "\033[1;33mStarting Arch configuration...\033[0m"
 
@@ -44,7 +44,7 @@ done
 
 if [ -f "$PACKAGE_LIST" ]; then
     echo -e "\033[1;33mInstalling packages from $PACKAGE_LIST...\033[0m"
-    paru -S --needed --noconfirm - < "$PACKAGE_LIST"
+    sudo pacman -S --needed --noconfirm - < "$PACKAGE_LIST"
 else
     echo -e "\033[1;31mWarning: $PACKAGE_LIST not found. Skipping installation.\033[0m"
 fi
