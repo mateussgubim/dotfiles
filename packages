@@ -14,6 +14,7 @@ nodejs
 noto-fonts
 npm
 nvim
+pcmanfm
 solaar
 sway
 swayimg
@@ -24,4 +25,5 @@ unrar
 waybar
 wl-clipboard
 wlsunset
+xdg-user-dirs
 zathura
