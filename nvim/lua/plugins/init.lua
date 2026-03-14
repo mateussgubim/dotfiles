@@ -21,4 +21,5 @@ require("lazy").setup({
   { import = "plugins.neotree" },
   { import = "plugins.lualine" },
   { import = "plugins.cmp" },
+  { import = "plugins.formatting" },
 })

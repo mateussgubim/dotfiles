@@ -9,14 +9,11 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "vtsls",
-          "eslint",
-          "emmet_ls",
           "lua_ls",
           "terraformls",
           "dockerls",
           "bashls",
-          "pyright",
+          "pyright", 
           "yamlls",
         },
       })
@@ -25,28 +22,7 @@ return {
       vim.lsp.config("terraformls", {})
       vim.lsp.config("dockerls", {})
       vim.lsp.config("bashls", {})
-      vim.lsp.config("pyright", {})
-      vim.lsp.config("emmet_ls", {})
-
-      vim.lsp.config("vtsls", {
-        settings = {
-          typescript = {
-            inlayHints = {
-              parameterNames = { enabled = "all" },
-              variableTypes = { enabled = true },
-            },
-          },
-        },
-      })
-
-      vim.lsp.config("eslint", {
-        on_attach = function(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "EslintFixAll",
-          })
-        end,
-      })
+      vim.lsp.config("pyright", {}) 
 
       vim.lsp.config("yamlls", {
         settings = {
