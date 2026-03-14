@@ -11,6 +11,7 @@ return {
         ensure_installed = {
           "vtsls",
           "eslint",
+          "emmet_ls",
           "lua_ls",
           "terraformls",
           "dockerls",
@@ -25,6 +26,7 @@ return {
       vim.lsp.config("dockerls", {})
       vim.lsp.config("bashls", {})
       vim.lsp.config("pyright", {})
+      vim.lsp.config("emmet_ls", {})
 
       vim.lsp.config("vtsls", {
         settings = {
