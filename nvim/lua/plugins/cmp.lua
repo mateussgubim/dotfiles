@@ -17,7 +17,7 @@ return {
 
     cmp.setup({
       snippet = {
-        expand = function (args)
+        expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
@@ -32,7 +32,7 @@ return {
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
-	{ name = "luasnip" },
+        { name = "luasnip" },
       },
     })
 
@@ -43,4 +43,3 @@ return {
     vim.lsp.config("*", { capabilities = capabilities })
   end,
 }
-
