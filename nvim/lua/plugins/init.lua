@@ -12,8 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "plugins.themes.catppuccin" },
-  -- { import = "plugins.themes.no-clown-fiesta" },
+  { import = "plugins.themes" },
   { import = "plugins.treesitter" },
   { import = "plugins.mason" },
   { import = "plugins.lsp" },

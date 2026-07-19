@@ -2,6 +2,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    enabled = false,
     priority = 1000,
     config = function()
       require("catppuccin").setup({
@@ -27,7 +28,7 @@ return {
         no_underline = false,
         styles = {
           comments = { "italic" },
-          conditionals = { "italic" },
+          conditionals = {},
           loops = {},
           functions = {},
           keywords = {},
