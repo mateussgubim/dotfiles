@@ -38,6 +38,6 @@ output DP-1 resolution 1920x1080 position 0,0
 output eDP-1 resolution 1920x1200 position 1920,0
 output eDP-1 scale 1.25
 
-output * bg ./wallpapers/bwi.jpg fit
+output * bg ./wallpapers/sacred-Jesus-heart.png fit
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
