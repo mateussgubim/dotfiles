@@ -38,7 +38,7 @@
 }
 
 #cpu, #memory, #disk, #pulseaudio, #network, #battery, #custom-power {
-  padding: 0 10px;
+  padding: 0 5px;
   margin: 4px 2px;
 }
 
